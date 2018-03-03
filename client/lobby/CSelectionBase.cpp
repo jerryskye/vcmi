@@ -331,7 +331,6 @@ void InfoCard::showAll(SDL_Surface * to)
 			printAtMiddleLoc(tob, 311, 472, FONT_SMALL, Colors::WHITE, to);
 		}
 
-		//name
 		printAtLoc(SEL->getMapInfo()->getName(), 26, 39, FONT_BIG, Colors::YELLOW, to);
 	}
 }
@@ -408,8 +407,7 @@ void InfoCard::setChat(bool activateChat)
 	if(showChat == activateChat)
 		return;
 
-//	assert(active); // FIXME: This shouln't be needed if chat / description wouldn't overlay each other on init
-
+	// FIXME: This shouln't be needed if chat / description wouldn't overlay each other on init
 	if(activateChat)
 	{
 		mapDescription->disable();

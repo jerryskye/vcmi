@@ -56,11 +56,9 @@
 #include "../lib/UnlockGuard.h"
 #include "../lib/CPathfinder.h"
 #include <SDL.h>
+#include "CServerHandler.h"
 // FIXME: only needed for CGameState::mutex
 #include "../lib/CGameState.h"
-
-// MPTODO: For campaign advancement
-#include "CServerHandler.h"
 
 
 // The macro below is used to mark functions that are called by client when game state changes.

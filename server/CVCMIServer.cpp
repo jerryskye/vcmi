@@ -580,14 +580,13 @@ void CVCMIServer::setPlayer(PlayerColor clickedColor)
 		PlayerToRestore(){ reset(); }
 	} playerToRestore;
 
-	// MPTODO: this should use PlayerSettings::controlledByAI / controlledByHuman
-	// Though it's need to be done carefully and tested
+
 	PlayerSettings & clicked = si->playerInfos[clickedColor];
 	PlayerSettings * old = nullptr;
 
 	//identify clicked player
 	int clickedNameID = 0; //number of player - zero means AI, assume it initially
-	if(!clicked.connectedPlayerIDs.empty())
+	if(clicked.isControlledByHuman())
 		clickedNameID = *(clicked.connectedPlayerIDs.begin()); //if not AI - set appropiate ID
 
 	if(clickedNameID > 0 && playerToRestore.id == clickedNameID) //player to restore is about to being replaced -> put him back to the old place

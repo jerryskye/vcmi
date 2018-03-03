@@ -73,8 +73,11 @@ class CMultiMode : public CIntObject
 public:
 	ESelectionScreen screenType;
 	CPicture * bg;
-	CTextInput * txt;
-	CButton * btns[7]; //0 - hotseat, 6 - cancel
+	CTextInput * playerName;
+	CButton * buttonHotseat;
+	CButton * buttonHost;
+	CButton * buttonJoin;
+	CButton * buttonCancel;
 	CGStatusBar * bar;
 
 	CMultiMode(ESelectionScreen ScreenType);

@@ -125,8 +125,6 @@ bool LobbySetCampaign::applyOnServer(CVCMIServer * srv)
 	srv->si->mode = StartInfo::CAMPAIGN;
 	srv->si->campState = ourCampaign;
 	srv->si->turnTime = 0;
-	// MPTODO: campaign loading!
-	srv->campaignMap = 0;
 	srv->setCampaignMap(0);
 	return true;
 }

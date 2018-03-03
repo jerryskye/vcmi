@@ -11,7 +11,7 @@
 
 #include "CSelectionBase.h"
 
-/// Scenario information screen shown during the game (thus not really a "pre-game" but fits here anyway)
+/// Scenario information screen shown during the game
 class CScenarioInfoScreen : public CIntObject, public ISelectionScreenInfo
 {
 public:

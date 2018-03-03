@@ -54,7 +54,7 @@ struct DLL_LINKAGE PlayerSettings
 		h & color;
 		h & handicap;
 		h & name;
-		if(version < 782 && !h.saving)
+		if(version < 782)
 		{
 			ui8 oldConnectedId = 0;
 			h & oldConnectedId;
@@ -169,7 +169,6 @@ struct DLL_LINKAGE LobbyInfo : public LobbyState
 	void verifyStateBeforeStart(bool ignoreNoHuman = false) const;
 
 	bool isClientHost(int clientId) const;
-	//MPTODO: this function has dupe i suppose
 	std::set<PlayerColor> getAllClientPlayers(int clientId);
 	std::vector<ui8> getConnectedPlayerIdsForClient(int clientId) const;
 

@@ -143,7 +143,7 @@ public:
 
 	void loadPreconditionRegions(ui32 regions);
 	bool isNotVoid() const;
-	// MPTODO: No longer const due to json node
+	// FIXME: due to usage of JsonNode I can't make these methods const
 	const CGHeroInstance * strongestHero(PlayerColor owner);
 	std::vector<CGHeroInstance *> getLostCrossoverHeroes(); /// returns a list of crossover heroes which started the scenario, but didn't complete it
 	std::vector<JsonNode> update782(std::vector<CGHeroInstance *> & heroes);

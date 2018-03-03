@@ -22,6 +22,7 @@ class CMapInfo;
 struct ClientPlayer;
 struct CPack;
 struct CPackForLobby;
+class CClient;
 
 template<typename T> class CApplier;
 class CBaseForLobbyApply;
@@ -62,7 +63,6 @@ public:
 	virtual void sendStartGame(bool allowOnlyAI = false) const = 0;
 };
 
-class CClient; //MPTODO: rework
 /// structure to handle running server and connecting to it
 class CServerHandler : public IServerAPI, public LobbyInfo
 {
@@ -96,7 +96,7 @@ public:
 	boost::thread * threadConnectionToServer;
 
 	std::shared_ptr<CConnection> c;
-	CClient * client; //MPTODO: rework
+	CClient * client;
 
 	CServerHandler();
 	virtual ~CServerHandler();

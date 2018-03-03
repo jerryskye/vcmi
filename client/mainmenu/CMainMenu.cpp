@@ -410,14 +410,14 @@ CMultiMode::CMultiMode(ESelectionScreen ScreenType)
 	pos = bg->center(); //center, window has size of bg graphic
 
 	bar = new CGStatusBar(new CPicture(Rect(7, 465, 440, 18), 0)); //226, 472
-	txt = new CTextInput(Rect(19, 436, 334, 16), *bg);
-	txt->setText(settings["general"]["playerName"].String()); //Player
-	txt->cb += std::bind(&CMultiMode::onNameChange, this, _1);
+	playerName = new CTextInput(Rect(19, 436, 334, 16), *bg);
+	playerName->setText(settings["general"]["playerName"].String()); //Player
+	playerName->cb += std::bind(&CMultiMode::onNameChange, this, _1);
 
-	btns[0] = new CButton(Point(373, 78), "MUBHOT.DEF", CGI->generaltexth->zelp[266], std::bind(&CMultiMode::hostTCP, this));
-	btns[1] = new CButton(Point(373, 78 + 57 * 1), "MUBHOST.DEF", CButton::tooltip("Host TCP/IP game", ""), std::bind(&CMultiMode::hostTCP, this));
-	btns[2] = new CButton(Point(373, 78 + 57 * 2), "MUBJOIN.DEF", CButton::tooltip("Join TCP/IP game", ""), std::bind(&CMultiMode::joinTCP, this));
-	btns[6] = new CButton(Point(373, 424), "MUBCANC.DEF", CGI->generaltexth->zelp[288], [&]() { GH.popIntTotally(this);}, SDLK_ESCAPE);
+	buttonHotseat = new CButton(Point(373, 78), "MUBHOT.DEF", CGI->generaltexth->zelp[266], std::bind(&CMultiMode::hostTCP, this));
+	buttonHost = new CButton(Point(373, 78 + 57 * 1), "MUBHOST.DEF", CButton::tooltip("Host TCP/IP game", ""), std::bind(&CMultiMode::hostTCP, this));
+	buttonJoin = new CButton(Point(373, 78 + 57 * 2), "MUBJOIN.DEF", CButton::tooltip("Join TCP/IP game", ""), std::bind(&CMultiMode::joinTCP, this));
+	buttonCancel = new CButton(Point(373, 424), "MUBCANC.DEF", CGI->generaltexth->zelp[288], [&]() { GH.popIntTotally(this);}, SDLK_ESCAPE);
 
 }
 

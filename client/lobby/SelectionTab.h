@@ -27,11 +27,10 @@ public:
 	mapSorter(ESortBy es) : sortBy(es){};
 };
 
-/// The selection tab which is shown at the map selection screen
 class SelectionTab : public CIntObject
 {
 public:
-	int positionsToShow; //how many entries (games/maps) can be shown
+	int positionsToShow;
 	CPicture * background;
 	CSlider * slider;
 	std::vector<std::shared_ptr<CMapInfo>> allItems;

@@ -73,7 +73,12 @@ public:
 		PlayerInfo pi;
 		PlayerSettings s;
 		CPicture * bg;
-		CButton * btns[6]; //left and right for town, hero, bonus
+		CButton * buttonTownLeft;
+		CButton * buttonTownRight;
+		CButton * buttonHeroLeft;
+		CButton * buttonHeroRight;
+		CButton * buttonBonusLeft;
+		CButton * buttonBonusRight;
 		CButton * flag;
 		SelectedBox * town;
 		SelectedBox * hero;
@@ -86,7 +91,7 @@ public:
 	};
 
 	CSlider * turnDuration;
-	std::map<PlayerColor, PlayerOptionsEntry *> entries; //indexed by color
+	std::map<PlayerColor, PlayerOptionsEntry *> entries;
 
 	OptionsTab();
 

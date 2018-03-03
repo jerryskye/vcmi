@@ -217,6 +217,7 @@ void SelectionTab::toggleMode()
 			parseSaves(getFiles("Saves/", EResType::CLIENT_SAVEGAME));
 			txt = new CTextInput(Rect(32, 539, 350, 20), Point(-32, -25), "GSSTRIP.bmp", 0);
 			txt->filters += CTextInput::filenameFilter;
+			restoreLastSelection();
 			break;
 
 		case ESelectionScreen::campaignList:
@@ -371,7 +372,7 @@ void SelectionTab::filter(int size, bool selectFirst)
 	else
 	{
 		slider->block(true);
-		if(onSelect) // MPTODO: Find why host doesn't crash on it
+		if(onSelect)
 			onSelect(nullptr);
 	}
 }

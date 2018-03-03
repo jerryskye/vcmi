@@ -15,7 +15,6 @@ class CSelectionBase;
 struct StartInfo;
 class CMapInfo;
 
-/// Save game screen
 class CSavingScreen : public CSelectionBase
 {
 public:

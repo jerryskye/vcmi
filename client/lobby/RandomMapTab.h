@@ -16,7 +16,6 @@
 class CMapGenOptions;
 class CToggleButton;
 
-/// The random map tab shows options for generating a random map.
 class RandomMapTab : public CIntObject
 {
 public:
@@ -38,8 +37,13 @@ private:
 
 	CPicture * bg;
 	CToggleButton * twoLevelsBtn;
-	CToggleGroup * mapSizeBtnGroup, * playersCntGroup, * teamsCntGroup, * compOnlyPlayersCntGroup,
-		* compOnlyTeamsCntGroup, * waterContentGroup, * monsterStrengthGroup;
+	CToggleGroup * mapSizeBtnGroup;
+	CToggleGroup * playersCntGroup;
+	CToggleGroup * teamsCntGroup;
+	CToggleGroup * compOnlyPlayersCntGroup;
+	CToggleGroup * compOnlyTeamsCntGroup;
+	CToggleGroup * waterContentGroup;
+	CToggleGroup * monsterStrengthGroup;
 	CButton * showRandMaps;
 	std::shared_ptr<CMapGenOptions> mapGenOptions;
 	std::shared_ptr<CMapInfo> mapInfo;

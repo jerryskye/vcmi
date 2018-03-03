@@ -80,7 +80,7 @@ bool LobbyInfo::isClientHost(int clientId) const
 	return clientId == hostClientId;
 }
 
-std::set<PlayerColor> LobbyInfo::getAllClientPlayers(int clientId) //MPTODO: this function has dupe i suppose
+std::set<PlayerColor> LobbyInfo::getAllClientPlayers(int clientId)
 {
 	std::set<PlayerColor> players;
 	for(auto & elem : si->playerInfos)

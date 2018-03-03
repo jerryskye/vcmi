@@ -24,8 +24,6 @@ class CVCMIServer;
 
 struct CPackForLobby : public CPack
 {
-	bool applied; // MPTODO: Only used by server. Find better way handle this since it's only used for propogate netpacks
-
 	bool checkClientPermissions(CVCMIServer * srv) const
 	{
 		return false;

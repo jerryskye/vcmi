@@ -469,16 +469,22 @@ OptionsTab::PlayerOptionsEntry::PlayerOptionsEntry(OptionsTab * owner, const Pla
 	bg = new CPicture(BitmapHandler::loadBitmap(bgs[s.color.getNum()]), 0, 0, true);
 	if(SEL->screenType == ESelectionScreen::newGame)
 	{
-		btns[0] = new CButton(Point(107, 5), "ADOPLFA.DEF", CGI->generaltexth->zelp[132], std::bind(&IServerAPI::setPlayerOption, CSH, LobbyChangePlayerOption::TOWN, -1, s.color));
-		btns[1] = new CButton(Point(168, 5), "ADOPRTA.DEF", CGI->generaltexth->zelp[133], std::bind(&IServerAPI::setPlayerOption, CSH, LobbyChangePlayerOption::TOWN, +1, s.color));
-		btns[2] = new CButton(Point(183, 5), "ADOPLFA.DEF", CGI->generaltexth->zelp[148], std::bind(&IServerAPI::setPlayerOption, CSH, LobbyChangePlayerOption::HERO, -1, s.color));
-		btns[3] = new CButton(Point(244, 5), "ADOPRTA.DEF", CGI->generaltexth->zelp[149], std::bind(&IServerAPI::setPlayerOption, CSH, LobbyChangePlayerOption::HERO, +1, s.color));
-		btns[4] = new CButton(Point(259, 5), "ADOPLFA.DEF", CGI->generaltexth->zelp[164], std::bind(&IServerAPI::setPlayerOption, CSH, LobbyChangePlayerOption::BONUS, -1, s.color));
-		btns[5] = new CButton(Point(320, 5), "ADOPRTA.DEF", CGI->generaltexth->zelp[165], std::bind(&IServerAPI::setPlayerOption, CSH, LobbyChangePlayerOption::BONUS, +1, s.color));
+		buttonTownLeft = new CButton(Point(107, 5), "ADOPLFA.DEF", CGI->generaltexth->zelp[132], std::bind(&IServerAPI::setPlayerOption, CSH, LobbyChangePlayerOption::TOWN, -1, s.color));
+		buttonTownRight = new CButton(Point(168, 5), "ADOPRTA.DEF", CGI->generaltexth->zelp[133], std::bind(&IServerAPI::setPlayerOption, CSH, LobbyChangePlayerOption::TOWN, +1, s.color));
+		buttonHeroLeft = new CButton(Point(183, 5), "ADOPLFA.DEF", CGI->generaltexth->zelp[148], std::bind(&IServerAPI::setPlayerOption, CSH, LobbyChangePlayerOption::HERO, -1, s.color));
+		buttonHeroRight = new CButton(Point(244, 5), "ADOPRTA.DEF", CGI->generaltexth->zelp[149], std::bind(&IServerAPI::setPlayerOption, CSH, LobbyChangePlayerOption::HERO, +1, s.color));
+		buttonBonusLeft = new CButton(Point(259, 5), "ADOPLFA.DEF", CGI->generaltexth->zelp[164], std::bind(&IServerAPI::setPlayerOption, CSH, LobbyChangePlayerOption::BONUS, -1, s.color));
+		buttonBonusRight = new CButton(Point(320, 5), "ADOPRTA.DEF", CGI->generaltexth->zelp[165], std::bind(&IServerAPI::setPlayerOption, CSH, LobbyChangePlayerOption::BONUS, +1, s.color));
 	}
 	else
-		for(auto & elem : btns)
-			elem = nullptr;
+	{
+		buttonTownLeft = nullptr;
+		buttonTownRight = nullptr;
+		buttonHeroLeft = nullptr;
+		buttonHeroRight = nullptr;
+		buttonBonusLeft = nullptr;
+		buttonBonusRight = nullptr;
+	}
 
 	hideUnavailableButtons();
 
@@ -515,42 +521,42 @@ void OptionsTab::PlayerOptionsEntry::showAll(SDL_Surface * to)
 
 void OptionsTab::PlayerOptionsEntry::hideUnavailableButtons()
 {
-	if(!btns[0])
+	if(!buttonTownLeft)
 		return;
 
 	const bool foreignPlayer = CSH->isGuest() && !CSH->isMyColor(s.color);
 
 	if((pi.allowedFactions.size() < 2 && !pi.isFactionRandom) || foreignPlayer)
 	{
-		btns[0]->disable();
-		btns[1]->disable();
+		buttonTownLeft->disable();
+		buttonTownRight->disable();
 	}
 	else
 	{
-		btns[0]->enable();
-		btns[1]->enable();
+		buttonTownLeft->enable();
+		buttonTownRight->enable();
 	}
 
 	if((pi.defaultHero() != -1 || s.castle < 0) //fixed hero
 		|| foreignPlayer) //or not our player
 	{
-		btns[2]->disable();
-		btns[3]->disable();
+		buttonHeroLeft->disable();
+		buttonHeroRight->disable();
 	}
 	else
 	{
-		btns[2]->enable();
-		btns[3]->enable();
+		buttonHeroLeft->enable();
+		buttonHeroRight->enable();
 	}
 
 	if(foreignPlayer)
 	{
-		btns[4]->disable();
-		btns[5]->disable();
+		buttonBonusLeft->disable();
+		buttonBonusRight->disable();
 	}
 	else
 	{
-		btns[4]->enable();
-		btns[5]->enable();
+		buttonBonusLeft->enable();
+		buttonBonusRight->enable();
 	}
 }
